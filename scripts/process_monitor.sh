@@ -12,3 +12,9 @@ fi
 echo "Application: $APP"
 echo "Status: RUNNING"
 echo "PID: $PID"
+echo
+
+echo "Process Metrics"
+echo "----------------------------------------"
+
+ps -p "$PID" -o pid,%cpu,%mem,vsz,rss,etime,cmd
