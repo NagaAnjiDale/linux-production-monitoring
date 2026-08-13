@@ -15,6 +15,6 @@ echo "PID: $PID"
 echo
 
 echo "Process Metrics"
-echo "----------------------------------------"
+echo "------------------------------------------------------------"
 
-ps -p "$PID" -o pid,%cpu,%mem,vsz,rss,etime,cmd
+ps -p "$PID" -o pid,ppid,%cpu,%mem,vsz,rss,etime,cmd
