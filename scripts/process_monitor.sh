@@ -18,3 +18,11 @@ echo "Process Metrics"
 echo "------------------------------------------------------------"
 
 ps -p "$PID" -o pid,ppid,%cpu,%mem,vsz,rss,etime,cmd
+
+echo
+echo "Thread Information"
+echo "------------------------------------------------------------"
+
+THREAD_COUNT=$(ps -p "$PID" -o nlwp=)
+
+echo "Thread Count: $THREAD_COUNT"
