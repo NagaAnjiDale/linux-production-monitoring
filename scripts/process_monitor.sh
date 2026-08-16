@@ -26,3 +26,11 @@ echo "------------------------------------------------------------"
 THREAD_COUNT=$(ps -p "$PID" -o nlwp=)
 
 echo "Thread Count: $THREAD_COUNT"
+
+echo
+echo "Open Files"
+echo "------------------------------------------------------------"
+
+OPEN_FILES=$(ls "/proc/$PID/fd" 2>/dev/null | wc -l)
+
+echo "Open File Descriptors: $OPEN_FILES"
