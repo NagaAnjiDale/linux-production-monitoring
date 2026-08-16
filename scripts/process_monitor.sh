@@ -34,3 +34,21 @@ echo "------------------------------------------------------------"
 OPEN_FILES=$(ls "/proc/$PID/fd" 2>/dev/null | wc -l)
 
 echo "Open File Descriptors: $OPEN_FILES"
+
+echo
+echo "Network / Service Health"
+echo "------------------------------------------------------------"
+
+PORT=8080
+
+if ss -ltn | grep -q ":$PORT "; then
+    echo "Port $PORT: LISTENING"
+else
+    echo "Port $PORT: NOT LISTENING"
+fi
+
+if curl -s --max-time 3 "http://localhost:$PORT" > /dev/null; then
+    echo "HTTP Health: OK"
+else
+    echo "HTTP Health: FAILED"
+fi
