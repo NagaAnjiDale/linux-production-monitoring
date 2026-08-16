@@ -52,3 +52,16 @@ if curl -s --max-time 3 "http://localhost:$PORT" > /dev/null; then
 else
     echo "HTTP Health: FAILED"
 fi
+
+echo
+echo "Disk I/O"
+echo "------------------------------------------------------------"
+
+READ_BYTES=$(awk '/^read_bytes:/ {print $2}' "/proc/$PID/io")
+WRITE_BYTES=$(awk '/^write_bytes:/ {print $2}' "/proc/$PID/io")
+
+READ_HUMAN=$(numfmt --to=iec "$READ_BYTES")
+WRITE_HUMAN=$(numfmt --to=iec "$WRITE_BYTES")
+
+echo "Read Bytes:  $READ_HUMAN"
+echo "Write Bytes: $WRITE_HUMAN"
